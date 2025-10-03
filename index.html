@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>高科技个人简历H5</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      background: radial-gradient(ellipse at top left, #1a2980 0%, #26d0ce 100%);
+      overflow-x: hidden;
+    }
+    #particles {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0;
+    }
+    header {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2.5rem 1rem 2rem 1rem;
+      color: #fff;
+    }
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.6rem;
+      letter-spacing: 0.1em;
+      margin-bottom: .5rem;
+      text-shadow: 0 2px 12px #26d0ce99;
+    }
+    header p {
+      font-size: 1.15rem;
+      color: #aeefff;
+      margin-bottom: .5rem;
+    }
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 750px;
+      margin: 1.5rem auto 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: rgba(255,255,255,0.13);
+      box-shadow: 0 8px 32px 0 rgba(31,38,135,.37);
+      border-radius: 18px;
+      padding: 2rem 1.5rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.18);
+      transition: box-shadow .3s;
+      animation: fadeIn 1.2s;
+    }
+    section:hover {
+      box-shadow: 0 12px 48px 0 #26d0ce77;
+      border: 1px solid #26d0ce33;
+    }
+    section h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: #26d0ce;
+      font-size: 1.5rem;
+      margin-top: 0;
+      letter-spacing: 0.05em;
+      margin-bottom: .8rem;
+      text-shadow: 0 1px 6px #1a298099;
+    }
+    ul, p { word-break: break-word; }
+    .photos {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .photos img {
+      max-width: 130px;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px #26d0ce77;
+      transition: transform .3s, box-shadow .3s;
+      cursor: pointer;
+    }
+    .photos img:hover {
+      transform: scale(1.15) rotate(-2deg);
+      box-shadow: 0 6px 32px #26d0cebb, 0 0 24px #1a2980bb;
+    }
+    .books-list, .invest-experiences, .work-list, .hobbies-list {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 1rem;
+    }
+    .books-list li, .invest-experiences li, .work-list li, .hobbies-list li {
+      margin-bottom: .65rem;
+      font-size: 1rem;
+      position: relative;
+      padding-left: 1.2em;
+    }
+    .books-list li:before,
+    .invest-experiences li:before,
+    .work-list li:before,
+    .hobbies-list li:before {
+      content: "★";
+      position: absolute;
+      left: 0;
+      color: #26d0ce;
+      font-size: 1em;
+      opacity: 0.7;
+      animation: glowstar 2.2s infinite linear;
+    }
+    @keyframes glowstar {
+      0% { text-shadow: 0 0 2px #26d0ce; }
+      50% { text-shadow: 0 0 12px #26d0ce; }
+      100% { text-shadow: 0 0 2px #26d0ce; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px);}
+      to   { opacity: 1; transform: translateY(0);}
+    }
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      main { padding: 0 .3rem; }
+      section { padding: 1rem .6rem; }
+      .photos img { max-width: 95px; }
+    }
+    .cool-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #26d0ce, #1a2980);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: .5em 1.3em;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      margin-top: 1em;
+      box-shadow: 0 2px 8px #26d0ce88;
+      cursor: pointer;
+      transition: background .2s, box-shadow .3s;
+    }
+    .cool-btn:hover {
+      background: linear-gradient(90deg, #1a2980, #26d0ce);
+      box-shadow: 0 6px 24px #26d0cebb;
+    }
+  </style>
+</head>
+<body>
+  <!-- 动态粒子背景 -->
+  <canvas id="particles"></canvas>
+  <header>
+    <h1>超级简历 H5</h1>
+    <p>科技感 · 炫酷 · 让你快速认识我</p>
+  </header>
+  <main>
+    <section id="reading">
+      <h2>读书</h2>
+      <p><strong>读过的书：</strong></p>
+      <ul class="books-list">
+        <li>《人类简史》——历史与人性新思考</li>
+        <li>《原则》——决策与成长</li>
+        <li>《小王子》——童心与哲理</li>
+      </ul>
+      <p><strong>感兴趣的书：</strong>《未来简史》、《财富自由之路》等</p>
+    </section>
+    <section id="fitness">
+      <h2>健身</h2>
+      <p>每周健身3次，注重力量与有氧，健康饮食。</p>
+      <div class="photos">
+        <img src="your-fit-photo1.jpg" alt="健身照片1">
+        <img src="your-fit-photo2.jpg" alt="健身照片2">
+      </div>
+      <p>身材展示：<em>（可插入体型/数据等）</em></p>
+    </section>
+    <section id="investment">
+      <h2>投资</h2>
+      <ul class="invest-experiences">
+        <li>股票投资：三年年化收益率8%</li>
+        <li>基金定投：年化收益10%</li>
+        <li>房地产：持有1套公寓</li>
+      </ul>
+    </section>
+    <section id="work">
+      <h2>工作与教育</h2>
+      <ul class="work-list">
+        <li>学历：硕士，XX大学，计算机科学</li>
+        <li>教育经验：科研项目，论文3篇</li>
+        <li>工作经历：XX科技公司前端开发工程师</li>
+        <li>现职：产品开发，年收入XX万元</li>
+      </ul>
+    </section>
+    <section id="hobbies">
+      <h2>兴趣爱好与生活方式</h2>
+      <ul class="hobbies-list">
+        <li>运动：跑步、骑行、游泳</li>
+        <li>旅行：喜欢深度探索</li>
+        <li>美食：烹饪与品尝</li>
+        <li>生活方式：规律作息，注重健康</li>
+      </ul>
+    </section>
+    <section id="future">
+      <h2>展望与目标</h2>
+      <p>希望实现财富自由，事业有成，对另一半期望积极向上、热爱生活。</p>
+    </section>
+  </main>
+  <!-- 粒子特效JS（无需第三方库，轻量版） -->
+  <script>
+    // 简单的粒子背景
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let W = window.innerWidth, H = window.innerHeight;
+    canvas.width = W; canvas.height = H;
+    let particles = [];
+    for(let i=0; i<50; i++){
+      particles.push({
+        x: Math.random()*W,
+        y: Math.random()*H,
+        r: Math.random()*2+1,
+        dx: (Math.random()-0.5)*1.2,
+        dy: (Math.random()-0.5)*1.2,
+        c: 'rgba(38,208,206,'+(Math.random()*0.7+0.3)+')'
+      });
+    }
+    function drawParticles(){
+      ctx.clearRect(0,0,W,H);
+      for(let i=0;i<particles.length;i++){
+        let p=particles[i];
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,2*Math.PI);
+        ctx.fillStyle=p.c;
+        ctx.shadowBlur=12;
+        ctx.shadowColor='#26d0ce';
+        ctx.fill();
+        p.x+=p.dx; p.y+=p.dy;
+        if(p.x<0||p.x>W) p.dx*=-1;
+        if(p.y<0||p.y>H) p.dy*=-1;
+      }
+      requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+    window.addEventListener('resize',()=>{
+      W=window.innerWidth; H=window.innerHeight;
+      canvas.width=W; canvas.height=H;
+    });
+  </script>
+</body>
+</html>
